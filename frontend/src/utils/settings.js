@@ -5,7 +5,7 @@ export const paths = {
 
 export const authSettings = {
   defaultErrorMessage: 'Что-то пошло не так',
-  baseUrl: 'https://auth.nomoreparties.co',
+  baseUrl: 'http://localhost:3001',
   signUpRequest: '/signup',
   signInRequest: '/signin',
   userRequest: '/users/me',
@@ -13,7 +13,7 @@ export const authSettings = {
 
 export const apiSettings = {
   token: '0b40a95f-9332-4356-a732-eb5ba165765e',
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-29',
+  baseUrl: 'http://localhost:3001',
   userRequest: '/users/me',
   initialCardsRequest: '/cards',
   newCardRequest: '/cards',

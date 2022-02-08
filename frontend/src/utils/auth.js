@@ -28,9 +28,9 @@ class Auth {
           .then(data => {
             const message = data.error || this.defaultErrorMessage;
 
-            return Promise.reject(message);
+            return Promise.reject(new Error(message));
           })
-      });
+      })
   }
 
   signIn(data) {
@@ -50,7 +50,7 @@ class Auth {
           .then(data => {
             const message = data.message || this.defaultErrorMessage;
 
-            return Promise.reject(message);
+            return Promise.reject(new Error(message));
           })
       });
   }

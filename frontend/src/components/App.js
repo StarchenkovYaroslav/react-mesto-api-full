@@ -126,8 +126,8 @@ function App() {
 
         navigate(`/${paths.signIn}`);
       })
-      .catch((message) => {
-        showServerError(message);
+      .catch((err) => {
+        showServerError(err.message);
       });
   }
 
@@ -141,8 +141,8 @@ function App() {
 
         navigate('/', {replace: true});
       })
-      .catch((message) => {
-        showServerError(message);
+      .catch((err) => {
+        showServerError(err.message);
       });
   }
 
