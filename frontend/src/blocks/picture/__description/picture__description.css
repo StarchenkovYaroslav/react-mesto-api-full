@@ -1,0 +1,10 @@
+.picture__description {
+  bottom: -24px;
+  color: #fff;
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  left: 0;
+  line-height: 1.25;
+  position: absolute;
+}

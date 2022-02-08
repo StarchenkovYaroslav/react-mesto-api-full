@@ -1,0 +1,15 @@
+.header_authorized {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas: 'header_logo header_info';
+}
+
+@media (max-width: 767px) {
+    .header_authorized {
+        grid-template-areas:
+            'header_info header_info'
+            'header_logo header_burger';
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

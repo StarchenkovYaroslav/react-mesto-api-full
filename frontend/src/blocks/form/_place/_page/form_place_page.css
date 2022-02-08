@@ -1,0 +1,22 @@
+.form_place_page {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-areas:
+        'form_title'
+        'form_fields'
+        'form_button'
+        'form_caption';
+    grid-template-rows: auto auto 1fr minmax(30px, auto);
+    height: 100%;
+    margin: 0 auto;
+    max-height: 520px;
+    max-width: 358px;
+    padding: 60px 0 0;
+    width: 100%;
+}
+
+@media (max-width: 424px) {
+    .form_place_page {
+        padding-top: 40px;
+    }
+}

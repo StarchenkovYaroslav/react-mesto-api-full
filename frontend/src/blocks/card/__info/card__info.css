@@ -1,0 +1,11 @@
+.card__info {
+  align-items: center;
+  display: grid;
+  gap: 3px 35px;
+  grid-template-areas:
+    'card__title card__like-button'
+    'card__title card__like-counter';
+  grid-template-columns: repeat(2, auto);
+  justify-content: space-between;
+  padding: 0 20px;
+}

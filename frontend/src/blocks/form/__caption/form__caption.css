@@ -1,0 +1,11 @@
+.form__caption {
+    align-self: end;
+    color: #fff;
+    grid-area: form_caption;
+    font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0;
+    text-align: center;
+}

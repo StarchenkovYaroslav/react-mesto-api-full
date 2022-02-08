@@ -1,0 +1,12 @@
+.form__button_place_page {
+    color: #000;
+    background-color: #fff;
+    grid-area: form_button;
+    align-self: end;
+}
+
+@media (max-width: 424px) {
+    .form__button_place_page{
+        font-size: 16px;
+    }
+}

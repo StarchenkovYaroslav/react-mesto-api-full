@@ -1,0 +1,23 @@
+.header__info {
+    display: grid;
+    grid-area: header_info;
+    grid-template-areas: 'header_email header_button';
+    grid-template-columns: repeat(2, auto);
+    column-gap: 24px;
+}
+
+@media (max-width: 767px) {
+    .header__info {
+        border-bottom: 1px solid rgba(84, 84, 84, .7);
+        column-gap: 0;
+        display: none;
+        grid-template-columns: auto;
+        grid-template-areas:
+            'header_email'
+            'header_button';
+        justify-items: center;
+        margin-bottom: 27px;
+        row-gap: 18px;
+        padding: 12px 0 40px;
+    }
+}

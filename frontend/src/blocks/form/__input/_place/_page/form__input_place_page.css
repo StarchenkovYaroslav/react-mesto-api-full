@@ -1,0 +1,9 @@
+.form__input_place_page {
+    background-color: #000;
+    border-bottom: 2px solid #ccc;
+    color: #ccc;
+}
+
+.form__input:focus {
+    border-color: rgba(204, 204, 204, 1);
+}

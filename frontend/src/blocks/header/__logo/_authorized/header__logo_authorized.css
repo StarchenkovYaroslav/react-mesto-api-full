@@ -1,0 +1,9 @@
+.header__logo_authorized {
+    grid-area: header_logo;
+}
+
+@media (max-width: 767px) {
+    .header__logo_authorized {
+        margin-left: 27px;
+    }
+}

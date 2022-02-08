@@ -1,0 +1,10 @@
+.footer {
+  grid-area: footer;
+  padding: 68px 0 0;
+}
+
+@media (max-width: 767px) {
+  .footer {
+    padding-top: 50px;
+  }
+}

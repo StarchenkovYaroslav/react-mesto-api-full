@@ -1,0 +1,7 @@
+.form__input_type_error {
+  border-color: #f00;
+}
+
+.form__input_type_error:focus {
+  border-color: #f00;
+}

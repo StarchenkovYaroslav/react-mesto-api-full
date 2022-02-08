@@ -1,0 +1,22 @@
+.profile__text {
+  align-items: baseline;
+  display: grid;
+  gap: 9px 19px;
+  grid-template-areas:
+    "name edit-button"
+    "status .";
+  grid-template-columns: repeat(2, auto);
+  max-width: 372px;
+}
+
+@media (max-width: 767px) {
+  .profile__text {
+    column-gap: 10px;
+    grid-template-areas:
+      ". name edit-button"
+      ". status .";
+    grid-template-columns: 18px repeat(2, minmax(0, auto));
+    max-width: 100%;
+    row-gap: 7px;
+  }
+}

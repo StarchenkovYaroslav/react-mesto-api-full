@@ -1,0 +1,30 @@
+.page {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-areas:
+    'header'
+    'content'
+    'footer';
+  grid-template-rows: auto 1fr auto;
+  margin: 0 auto;
+  max-width: 880px;
+  min-height: 100vh;
+  min-width: 320px;
+  padding: 45px 0 56px;
+}
+
+@media (max-width: 928px) {
+  .page {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .page {
+    padding-bottom: 33px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 28px;
+  }
+}

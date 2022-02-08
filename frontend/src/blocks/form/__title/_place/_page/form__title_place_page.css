@@ -1,0 +1,12 @@
+.form__title_place_page {
+    color: #fff;
+    grid-area: form_title;
+    text-align: center;
+}
+
+@media (max-width: 424px) {
+    .form__title_place_page {
+        font-size: 20px;
+        margin-bottom: 40px;
+    }
+}

@@ -1,0 +1,26 @@
+.profile__add-card-button {
+  background: url(../../../images/icons/add.svg) no-repeat center, transparent;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  box-sizing: border-box;
+  cursor: pointer;
+  height: 50px;
+  opacity: 1;
+  transition: all .2s;
+  width: 150px;
+}
+
+.profile__add-card-button:focus {
+  outline: none;
+}
+
+.profile__add-card-button:hover {
+  opacity: .6;
+}
+
+@media (max-width: 424px) {
+  .profile__add-card-button {
+    background-size: 16px 16px;
+    width: 100%;
+  }
+}

@@ -1,0 +1,28 @@
+.header__burger-span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 6px;
+    transition: .5s all;
+}
+
+.header__burger-span:last-child {
+    margin: 0;
+}
+
+.header__burger_active .header__burger-span {
+    margin-bottom: -3px;
+}
+
+.header__burger_active .header__burger-span:nth-child(1) {
+    transform: translateY(3px) rotate(-45deg);
+}
+
+.header__burger_active .header__burger-span:nth-child(2) {
+    display: none;
+}
+
+.header__burger_active .header__burger-span:nth-child(3) {
+    transform: translateY(3px) rotate(45deg);
+}
