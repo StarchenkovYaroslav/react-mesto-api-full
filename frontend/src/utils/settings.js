@@ -1,6 +1,6 @@
 export const paths = {
   signUp: 'sign-up',
-  signIn: 'sign-in'
+  signIn: 'sign-in',
 }
 
 export const authSettings = {
@@ -8,12 +8,14 @@ export const authSettings = {
   baseUrl: 'http://localhost:3001',
   signUpRequest: '/signup',
   signInRequest: '/signin',
+  signOutRequest: '/signout',
   userRequest: '/users/me',
 }
 
 export const apiSettings = {
   token: '0b40a95f-9332-4356-a732-eb5ba165765e',
   baseUrl: 'http://localhost:3001',
+  checkTokenRequest: '/token/check',
   userRequest: '/users/me',
   initialCardsRequest: '/cards',
   newCardRequest: '/cards',

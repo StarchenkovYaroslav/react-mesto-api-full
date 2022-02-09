@@ -23,19 +23,14 @@ mongoose.connect(DB_ADDRESS, {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(cookieParser());
-
 app.use(requestLogger);
-
 app.use(corsHandler);
 
 app.use(routs);
 
 app.use(errorLogger);
-
 app.use(errors());
-
 app.use(errorHandler);
 
 app.listen(PORT);

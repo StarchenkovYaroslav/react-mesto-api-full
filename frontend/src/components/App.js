@@ -26,7 +26,6 @@ function App() {
   const navigate = useNavigate();
 
   const [currentUser, setCurrentUser] = useState(defaultUser);
-  const [currentUserEmail, setCurrentUserEmail] = useState('');
 
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -57,7 +56,6 @@ function App() {
     || cardToShow
     || cardToDelete;
 
-
   function showServerResponse(success, message) {
     setIsServerInfoPopupOpened(true);
     setServerSuccess(success);
@@ -73,20 +71,14 @@ function App() {
   }
 
   useEffect(() => {
-    if (localStorage.getItem('token')) {
-      auth.getUser(localStorage.getItem('token'))
-        .then((userData) => {
-          setCurrentUserEmail(userData.data.email);
-
-          setLoggedIn(true);
-
-          navigate('/', {replace: true});
-        })
-        .catch(() => {
-          navigate(paths.signIn);
-        });
-    }
-  }, [navigate]);
+    api.checkToken()
+      .then((tokenProps) => {
+        setLoggedIn(tokenProps.isValid);
+      })
+      .catch((status) => {
+        console.log(status);
+      });
+  }, []);
 
   useEffect(() => {
     if (loggedIn) {
@@ -95,6 +87,8 @@ function App() {
           setCurrentUser(userData);
 
           setCards(initialCards);
+
+          navigate('/');
         })
         .catch((status) => {
           console.log(status);
@@ -133,10 +127,7 @@ function App() {
 
   function handleSignIn(signInData) {
     auth.signIn(signInData)
-      .then((data) => {
-        localStorage.setItem('token', data.token);
-        setCurrentUserEmail(signInData.email);
-
+      .then(() => {
         setLoggedIn(true);
 
         navigate('/', {replace: true});
@@ -147,10 +138,15 @@ function App() {
   }
 
   function handleSignOut() {
-    localStorage.removeItem('token');
-    setLoggedIn(false);
+    auth.signOut()
+      .then(() => {
+        setLoggedIn(false);
 
-    navigate(`/${paths.signIn}`);
+        navigate(`/${paths.signIn}`);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      })
   }
 
   function handleClosePopup() {
@@ -276,7 +272,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <Header loggedIn={loggedIn} currentUserEmail={currentUserEmail} onSignOut={handleSignOut} />
+        <Header loggedIn={loggedIn} onSignOut={handleSignOut} />
 
         <main className="content section">
           <Routes>

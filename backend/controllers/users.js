@@ -143,3 +143,10 @@ module.exports.login = (req, res, next) => {
       next(err);
     });
 };
+
+module.exports.logOut = (req, res) => {
+  res
+    .status(200)
+    .clearCookie('token')
+    .end();
+};

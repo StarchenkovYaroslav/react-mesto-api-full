@@ -8,6 +8,7 @@ class Auth {
     this.baseUrl = settings.baseUrl;
     this.signuUpRequest = settings.signUpRequest;
     this.signInRequest = settings.signInRequest;
+    this.signOutRequest = settings.signOutRequest;
     this.userRequest = settings.userRequest;
   }
 
@@ -15,8 +16,9 @@ class Auth {
     return fetch(this.baseUrl + this.signuUpRequest, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
+      credentials: 'include',
       body: JSON.stringify(data)
     })
       .then(response => {
@@ -39,6 +41,7 @@ class Auth {
       headers: {
         'Content-Type': 'application/json'
       },
+      credentials: 'include',
       body: JSON.stringify(data)
     })
       .then(response => {
@@ -55,13 +58,32 @@ class Auth {
       });
   }
 
-  getUser(token) {
+  signOut() {
+    return fetch(this.baseUrl + this.signOutRequest, {
+      method: 'HEAD',
+      credentials: 'include',
+    })
+      .then(response => {
+        if (response.ok) {
+          return Promise.resolve();
+        }
+
+        return response.json()
+          .then(data => {
+            const message = data.message || this.defaultErrorMessage;
+
+            return Promise.reject(new Error(message));
+          })
+      });
+  }
+
+  getUser() {
     return fetch(this.baseUrl + this.userRequest, {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization' : `Bearer ${token}`
-      }
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
     })
       .then(this._checkResponse);
   }

@@ -3,8 +3,8 @@ import {apiSettings} from './settings';
 class Api {
   constructor(settings) {
     this._baseUrl = settings.baseUrl;
-    this._token = settings.token;
 
+    this._checkTokenRequest = settings.checkTokenRequest;
     this._userRequest = settings.userRequest;
     this._initialCardsRequest = settings.initialCardsRequest;
     this._newCardRequest = settings.newCardRequest;
@@ -14,12 +14,22 @@ class Api {
     this._cardOffRequest = settings.cardOffRequest;
   }
 
+  checkToken() {
+    return fetch(this._baseUrl + this._checkTokenRequest, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include'
+    })
+      .then(this._checkResponse);
+  }
+
   getUser() {
     return fetch(this._baseUrl + this._userRequest, {
       headers: {
-        authorization: this._token,
         'Content-Type': 'application/json'
-      }
+      },
+      credentials: 'include'
     })
       .then(this._checkResponse);
   }
@@ -28,9 +38,9 @@ class Api {
     return fetch(this._baseUrl + this._userInfoRequest, {
       method: 'PATCH',
       headers: {
-        authorization: this._token,
         'Content-Type': 'application/json'
       },
+      credentials: 'include',
       body: JSON.stringify(userData)
     })
       .then(this._checkResponse);
@@ -40,9 +50,9 @@ class Api {
     return fetch(this._baseUrl + this._userAvatarRequest, {
       method: 'PATCH',
       headers: {
-        authorization: this._token,
         'Content-Type': 'application/json'
       },
+      credentials: 'include',
       body: JSON.stringify(avatarData)
     })
       .then(this._checkResponse);
@@ -51,9 +61,9 @@ class Api {
   getInitialCards() {
     return fetch(this._baseUrl + this._initialCardsRequest, {
       headers: {
-        authorization: this._token,
         'Content-Type': 'application/json'
-      }
+      },
+      credentials: 'include'
     })
       .then(this._checkResponse);
   }
@@ -62,9 +72,9 @@ class Api {
     return fetch(this._baseUrl + this._newCardRequest, {
       method: 'POST',
       headers: {
-        authorization: this._token,
         'Content-Type': 'application/json'
       },
+      credentials: 'include',
       body: JSON.stringify(cardData)
     })
       .then(this._checkResponse);
@@ -74,9 +84,9 @@ class Api {
     return fetch(this._baseUrl + this._cardOffRequest + card._id, {
       method: 'DELETE',
       headers: {
-        authorization: this._token,
         'Content-Type': 'application/json'
-      }
+      },
+      credentials: 'include'
     })
       .then(this._checkResponse);
   }
@@ -87,9 +97,9 @@ class Api {
     return fetch(this._baseUrl + this._cardLikeRequest + cardId, {
       method: method,
       headers: {
-        authorization: this._token,
         'Content-Type': 'application/json'
-      }
+      },
+      credentials: 'include'
     })
       .then(this._checkResponse);
   }

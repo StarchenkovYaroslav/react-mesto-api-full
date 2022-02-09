@@ -3,9 +3,13 @@ import {Link} from "react-router-dom";
 import logo from "../images/logo.svg";
 
 import HeaderRightCorner from "./HeaderRightCorner";
+import {useContext} from "react";
+import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 
 function Header(props) {
+  const currentUser = useContext(CurrentUserContext);
+
   return (
     <header className={`header${props.loggedIn ? ' header_authorized' : ''}`}>
       <Link to="/" className={`header__logo${props.loggedIn ? ' header__logo_authorized' : ''}`}>
@@ -17,7 +21,7 @@ function Header(props) {
       </Link>
       <HeaderRightCorner
         loggedIn={props.loggedIn}
-        currentUserEmail={props.currentUserEmail}
+        currentUserEmail={currentUser.email}
         onSignOut={props.onSignOut}
       />
     </header>
