@@ -5,7 +5,7 @@ export const paths = {
 
 export const authSettings = {
   defaultErrorMessage: 'Что-то пошло не так',
-  baseUrl: '/api.mesto.front.nomoredomains.work',
+  baseUrl: 'https://api.mesto.front.nomoredomains.work',
   signUpRequest: '/signup',
   signInRequest: '/signin',
   signOutRequest: '/signout',
@@ -14,7 +14,7 @@ export const authSettings = {
 
 export const apiSettings = {
   token: '0b40a95f-9332-4356-a732-eb5ba165765e',
-  baseUrl: '/api.mesto.front.nomoredomains.work',
+  baseUrl: 'https://api.mesto.front.nomoredomains.work',
   checkTokenRequest: '/token/check',
   userRequest: '/users/me',
   initialCardsRequest: '/cards',
