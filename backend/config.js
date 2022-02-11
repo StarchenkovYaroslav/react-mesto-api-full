@@ -5,7 +5,7 @@ const {
 } = process.env;
 
 const ALLOWED_CORS = [
-  'http://mesto.front.nomoredomains.work',
+  'mesto.front.nomoredomains.work',
 ];
 
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
