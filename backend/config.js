@@ -5,6 +5,7 @@ const {
 } = process.env;
 
 const ALLOWED_CORS = [
+  'http://mesto.front.nomoredomains.work',
   'https://mesto.front.nomoredomains.work',
 ];
 
