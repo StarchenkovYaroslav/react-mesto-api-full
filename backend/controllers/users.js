@@ -130,7 +130,7 @@ module.exports.login = (req, res, next) => {
           maxAge: 3600000 * 24 * 7,
           httpOnly: true,
           sameSite: 'none',
-          secure: false,
+          secure: true,
         })
         .status(OK_STATUS)
         .send(user);
