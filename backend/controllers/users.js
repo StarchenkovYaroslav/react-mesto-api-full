@@ -148,6 +148,10 @@ module.exports.login = (req, res, next) => {
 module.exports.logOut = (req, res) => {
   res
     .status(200)
-    .clearCookie('token')
+    .clearCookie('token', {
+      httpOnly: true,
+      sameSite: 'none',
+      secure: true,
+    })
     .end();
 };
