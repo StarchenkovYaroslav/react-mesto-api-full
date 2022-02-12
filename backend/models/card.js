@@ -33,4 +33,12 @@ const cardSchema = new mongoose.Schema({
   },
 }, { versionKey: false });
 
+cardSchema.post('save', (doc, next) => {
+  doc.populate(['owner', 'likes'])
+    .then(() => {
+      next();
+    })
+    .catch(next);
+});
+
 module.exports = mongoose.model('card', cardSchema);
