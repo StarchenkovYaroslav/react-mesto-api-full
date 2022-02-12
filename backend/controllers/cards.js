@@ -9,7 +9,7 @@ module.exports.getAllCards = (req, res, next) => {
   Card.find({})
     .populate(['owner', 'likes'])
     .then((cards) => {
-      res.status(OK_STATUS).send(cards);
+      res.status(OK_STATUS).send(cards.reverse());
     })
     .catch(next);
 };
