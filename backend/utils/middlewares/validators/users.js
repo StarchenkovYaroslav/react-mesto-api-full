@@ -2,12 +2,6 @@ const { celebrate, Joi } = require('celebrate');
 
 const { urlValidator } = require('../../custom-validators');
 
-module.exports.getUserByIdValidator = celebrate({
-  params: Joi.object().keys({
-    userId: Joi.string().required().hex().length(24),
-  }),
-});
-
 module.exports.createUserValidator = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),

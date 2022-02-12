@@ -10,23 +10,6 @@ const { JWT_SECRET } = require('../config');
 
 const { OK_STATUS, CREATED_STATUS } = require('../utils/constants');
 
-module.exports.getAllUsers = (req, res, next) => {
-  User.find({})
-    .then((users) => {
-      res.status(OK_STATUS).send(users);
-    })
-    .catch(next);
-};
-
-module.exports.getUserById = (req, res, next) => {
-  User.findById(req.params.userId)
-    .orFail(new NotFoundError('Пользователь не найден'))
-    .then((user) => {
-      res.status(OK_STATUS).send(user);
-    })
-    .catch(next);
-};
-
 module.exports.getCurrentUser = (req, res, next) => {
   User.findById(req.user._id)
     .orFail(new NotFoundError('Пользователь не найден'))
