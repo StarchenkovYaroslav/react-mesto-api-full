@@ -18,9 +18,10 @@ export const apiSettings = {
   checkTokenRequest: '/token/check',
   userRequest: '/users/me',
   initialCardsRequest: '/cards',
+  cardsRequest: '/cards',
+  likeRequest: '/likes',
   newCardRequest: '/cards',
   cardOffRequest: '/cards/',
-  cardLikeRequest: '/cards/likes/',
   userInfoRequest: '/users/me',
   userAvatarRequest: '/users/me/avatar'
 }

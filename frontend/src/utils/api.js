@@ -6,9 +6,10 @@ class Api {
 
     this._checkTokenRequest = settings.checkTokenRequest;
     this._userRequest = settings.userRequest;
+    this._cardsRequest = settings.cardsRequest;
+    this._likeRequest = settings.likeRequest;
     this._initialCardsRequest = settings.initialCardsRequest;
     this._newCardRequest = settings.newCardRequest;
-    this._cardLikeRequest = settings.cardLikeRequest;
     this._userInfoRequest = settings.userInfoRequest;
     this._userAvatarRequest = settings.userAvatarRequest;
     this._cardOffRequest = settings.cardOffRequest;
@@ -94,7 +95,7 @@ class Api {
   toggleCardLike(cardId, isLikedByUser) {
     const method = isLikedByUser ? 'DELETE' : 'PUT';
 
-    return fetch(this._baseUrl + this._cardLikeRequest + cardId, {
+    return fetch(this._baseUrl + this._cardsRequest + '/' + cardId + this._likeRequest, {
       method: method,
       headers: {
         'Content-Type': 'application/json'
