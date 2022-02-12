@@ -19,7 +19,7 @@ router.use(auth);
 router.use('/users', usersRouter);
 router.use('/cards', cardsRouter);
 
-router.use('/signout', logOut);
+router.head('/signout', logOut);
 
 router.use(() => {
   throw new NotFoundError('страница не найдена');
