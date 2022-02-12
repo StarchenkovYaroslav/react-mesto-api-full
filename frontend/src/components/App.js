@@ -4,7 +4,6 @@ import {Route, Routes, useNavigate} from "react-router-dom";
 import {CurrentUserContext, defaultUser} from '../contexts/CurrentUserContext';
 
 import {api} from '../utils/api';
-import {auth} from "../utils/auth";
 import {paths} from "../utils/settings";
 
 import Header from './Header';
@@ -75,8 +74,8 @@ function App() {
       .then((tokenProps) => {
         setLoggedIn(tokenProps.isValid);
       })
-      .catch((status) => {
-        console.log(status);
+      .catch((err) => {
+        console.log(err.message);
       });
   }, []);
 
@@ -90,8 +89,8 @@ function App() {
 
           navigate('/');
         })
-        .catch((status) => {
-          console.log(status);
+        .catch((err) => {
+          console.log(err.message);
         });
     }
   }, [loggedIn]);
@@ -114,7 +113,7 @@ function App() {
 
 
   function handleSignUp(signUpData) {
-    auth.signUp(signUpData)
+    api.signUp(signUpData)
       .then(() => {
         showServerSuccess('Вы успешно зарегистрировались!')
 
@@ -126,7 +125,7 @@ function App() {
   }
 
   function handleSignIn(signInData) {
-    auth.signIn(signInData)
+    api.signIn(signInData)
       .then(() => {
         setLoggedIn(true);
 
@@ -138,7 +137,7 @@ function App() {
   }
 
   function handleSignOut() {
-    auth.signOut()
+    api.signOut()
       .then(() => {
         setLoggedIn(false);
 
@@ -186,8 +185,8 @@ function App() {
 
         handleClosePopup();
       })
-      .catch((status) => {
-        console.log(status);
+      .catch((err) => {
+        console.log(err.message);
       })
       .finally(() => {
         setIsProfileEditing(false);
@@ -203,8 +202,8 @@ function App() {
 
         handleClosePopup();
       })
-      .catch((status) => {
-        console.log(status);
+      .catch((err) => {
+        console.log(err.message);
       })
       .finally(() => {
         setIsAvatarEditing(false);
@@ -220,8 +219,8 @@ function App() {
 
         handleClosePopup();
       })
-      .catch((status) => {
-        console.log(status);
+      .catch((err) => {
+        console.log(err.message);
       })
       .finally(() => {
         setIsPlaceAdding(false);
@@ -241,9 +240,9 @@ function App() {
           return prevCards.map(card => card._id === currentCard._id ? newCard : card)
         });
       })
-      .catch((status) => {
-        console.log(status);
-      });
+      .catch((err) => {
+        console.log(err.message);
+      })
   }
 
   function handleCardDelete(card) {
@@ -261,8 +260,8 @@ function App() {
 
         setCardToDelete(null);
       })
-      .catch((status) => {
-        console.log(status);
+      .catch((err) => {
+        console.log(err.message);
       })
       .finally(() => {
         setIsCardDeleting(false);

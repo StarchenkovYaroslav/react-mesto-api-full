@@ -4,19 +4,57 @@ class Api {
   constructor(settings) {
     this._baseUrl = settings.baseUrl;
 
-    this._checkTokenRequest = settings.checkTokenRequest;
-    this._userRequest = settings.userRequest;
-    this._cardsRequest = settings.cardsRequest;
-    this._likeRequest = settings.likeRequest;
-    this._initialCardsRequest = settings.initialCardsRequest;
-    this._newCardRequest = settings.newCardRequest;
-    this._userInfoRequest = settings.userInfoRequest;
-    this._userAvatarRequest = settings.userAvatarRequest;
-    this._cardOffRequest = settings.cardOffRequest;
+    this._defaultErrorMessage = settings.defaultErrorMessage;
+
+    this._signUpEndpoint = settings.signUpEndpoint;
+    this._signInEndpoint = settings.signInEndpoint;
+    this._signOutEndpoint = settings.signOutEndpoint;
+
+    this._tokenEndpoint = settings.tokenEndpoint;
+    this._tokenCheckEndpoint = settings.tokenCheckEndpoint;
+
+    this._usersEndpoint = settings.usersEndpoint;
+    this._userInfoEndpoint = settings.userInfoEndpoint;
+    this._userAvatarEndpoint = settings.userAvatarEndpoint;
+
+    this._cardsEndpoint = settings.cardsEndpoint;
+    this._cardLikeEndpoint = settings.cardLikeEndpoint;
+  }
+
+  signUp(data) {
+    return fetch(`${this._baseUrl}/${this._signUpEndpoint}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(data)
+    })
+      .then(this._checkResponse);
+  }
+
+  signIn(data) {
+    return fetch(`${this._baseUrl}/${this._signInEndpoint}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify(data)
+    })
+      .then(this._checkResponse);
+  }
+
+  signOut() {
+    return fetch(`${this._baseUrl}/${this._signOutEndpoint}`, {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then(this._checkResponse);
   }
 
   checkToken() {
-    return fetch(this._baseUrl + this._checkTokenRequest, {
+    return fetch(`${this._baseUrl}/${this._tokenEndpoint}/${this._tokenCheckEndpoint}`, {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -26,7 +64,7 @@ class Api {
   }
 
   getUser() {
-    return fetch(this._baseUrl + this._userRequest, {
+    return fetch(`${this._baseUrl}/${this._usersEndpoint}/${this._userInfoEndpoint}`, {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -36,7 +74,7 @@ class Api {
   }
 
   editUserInfo(userData) {
-    return fetch(this._baseUrl + this._userInfoRequest, {
+    return fetch(`${this._baseUrl}/${this._usersEndpoint}/${this._userInfoEndpoint}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
@@ -48,7 +86,7 @@ class Api {
   }
 
   editUserAvatar(avatarData) {
-    return fetch(this._baseUrl + this._userAvatarRequest, {
+    return fetch(`${this._baseUrl}/${this._usersEndpoint}/${this._userInfoEndpoint}/${this._userAvatarEndpoint}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
@@ -60,7 +98,7 @@ class Api {
   }
 
   getInitialCards() {
-    return fetch(this._baseUrl + this._initialCardsRequest, {
+    return fetch(`${this._baseUrl}/${this._cardsEndpoint}`, {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -70,7 +108,7 @@ class Api {
   }
 
   addCard(cardData) {
-    return fetch(this._baseUrl + this._newCardRequest, {
+    return fetch(`${this._baseUrl}/${this._cardsEndpoint}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -82,7 +120,7 @@ class Api {
   }
 
   deleteCard(card) {
-    return fetch(this._baseUrl + this._cardOffRequest + card._id, {
+    return fetch(`${this._baseUrl}/${this._cardsEndpoint}/${card._id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -95,7 +133,7 @@ class Api {
   toggleCardLike(cardId, isLikedByUser) {
     const method = isLikedByUser ? 'DELETE' : 'PUT';
 
-    return fetch(this._baseUrl + this._cardsRequest + '/' + cardId + this._likeRequest, {
+    return fetch(`${this._baseUrl}/${this._cardsEndpoint}/${cardId}/${this._cardLikeEndpoint}`, {
       method: method,
       headers: {
         'Content-Type': 'application/json'
@@ -110,7 +148,12 @@ class Api {
       return response.json();
     }
 
-    return Promise.reject(response.status);
+    return response.json()
+      .then(data => {
+        const message = data.message || this._defaultErrorMessage;
+
+        return Promise.reject(new Error(message));
+      });
   }
 }
 

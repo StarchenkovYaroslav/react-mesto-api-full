@@ -136,5 +136,5 @@ module.exports.logOut = (req, res) => {
       sameSite: 'none',
       secure: true,
     })
-    .end();
+    .send({ message: 'осуществлен выход из системы' });
 };

@@ -3,27 +3,19 @@ export const paths = {
   signIn: 'sign-in',
 }
 
-export const authSettings = {
-  defaultErrorMessage: 'Что-то пошло не так',
-  baseUrl: 'http://localhost:3001',
-  signUpRequest: '/signup',
-  signInRequest: '/signin',
-  signOutRequest: '/signout',
-  userRequest: '/users/me',
-}
-
 export const apiSettings = {
-  token: '0b40a95f-9332-4356-a732-eb5ba165765e',
   baseUrl: 'http://localhost:3001',
-  checkTokenRequest: '/token/check',
-  userRequest: '/users/me',
-  initialCardsRequest: '/cards',
-  cardsRequest: '/cards',
-  likeRequest: '/likes',
-  newCardRequest: '/cards',
-  cardOffRequest: '/cards/',
-  userInfoRequest: '/users/me',
-  userAvatarRequest: '/users/me/avatar'
+  defaultErrorMessage: 'Что-то пошло не так',
+  signUpEndpoint: 'signup',
+  signInEndpoint: 'signin',
+  signOutEndpoint: 'signout',
+  tokenEndpoint: 'token',
+  tokenCheckEndpoint: 'check',
+  usersEndpoint: 'users',
+  userInfoEndpoint: 'me',
+  userAvatarEndpoint: 'avatar',
+  cardsEndpoint: 'cards',
+  cardLikeEndpoint: 'likes'
 }
 export const formClassesAndSelectors = {
   formSelector: '.form',
