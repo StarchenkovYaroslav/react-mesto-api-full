@@ -28,8 +28,8 @@ module.exports.createUser = (req, res, next) => {
     .then((hashedPassword) => User.create({
       name, about, avatar, email, password: hashedPassword,
     }))
-    .then((newUser) => {
-      res.status(CREATED_STATUS).send(newUser);
+    .then(() => {
+      res.status(CREATED_STATUS).send({ message: 'пользователь успешно создан' });
     })
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {
@@ -116,7 +116,7 @@ module.exports.login = (req, res, next) => {
           secure: true,
         })
         .status(OK_STATUS)
-        .send(user);
+        .send({ message: 'вход выполнен' });
     })
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {
