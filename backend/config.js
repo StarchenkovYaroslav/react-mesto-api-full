@@ -1,11 +1,10 @@
 const {
-  PORT = 3001,
+  PORT = 3000,
   DB_ADDRESS = 'mongodb://localhost:27017/mestodb',
   JWT_SECRET = 'jwt_secret',
 } = process.env;
 
 const ALLOWED_CORS = [
-  'http://localhost:3000',
   'http://mesto.front.nomoredomains.work',
   'https://mesto.front.nomoredomains.work',
 ];

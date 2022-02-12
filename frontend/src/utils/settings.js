@@ -4,7 +4,7 @@ export const paths = {
 }
 
 export const apiSettings = {
-  baseUrl: 'http://localhost:3001',
+  baseUrl: 'https://api.mesto.front.nomoredomains.work',
   defaultErrorMessage: 'Что-то пошло не так',
   signUpEndpoint: 'signup',
   signInEndpoint: 'signin',
