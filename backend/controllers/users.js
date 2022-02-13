@@ -37,7 +37,7 @@ module.exports.createUser = (req, res, next) => {
         return;
       }
 
-      if (err.name === 'MongoError' && err.code === 11000) {
+      if (err.code === 11000) {
         next(new DuplicateError(err.message));
         return;
       }
@@ -118,14 +118,7 @@ module.exports.login = (req, res, next) => {
         .status(OK_STATUS)
         .send({ message: 'вход выполнен' });
     })
-    .catch((err) => {
-      if (err.name === 'ValidationError' || err.name === 'CastError') {
-        next(new InvalidDataError(err.message));
-        return;
-      }
-
-      next(err);
-    });
+    .catch(next);
 };
 
 module.exports.logOut = (req, res) => {
