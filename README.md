@@ -17,3 +17,7 @@
 ## Ссылка на сайт
 
 https://mesto.front.nomoredomains.work
+
+## Статус проекта
+
+Завершен
